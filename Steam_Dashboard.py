@@ -85,30 +85,36 @@ else:
 html = f"""
 <!DOCTYPE html>
 <html>
-<head><title>{player_info['personaname']}'s Steam Stats</title></head>
+<head>
+<title>{player_info['personaname']}'s Steam Stats</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <body>
-  <h1>{player_info['personaname']}'s Steam Dashboard</h1>
-  <img src="{player_info['avatarfull']}" width="80">
+    <div class="container">
+        <div class="header">
+            <h1>{player_info['personaname']}'s Steam Dashboard</h1>
+            <img src="{player_info['avatarfull']}" width="80">
+        </div>
 
-  <h2>Top 10 Games by Playtime</h2>
-  <ul>
+        <h2>Top 10 Games by Playtime</h2>
+        <ul class="top-games">
 """
 
 for g in top_games:
-    html += f"    <li>{g['name']} — {g['playtime_hours']} hrs</li>\n"
+        html += f"      <li class=\"game-item\">{g['name']} — {g['playtime_hours']} hrs</li>\n"
 
 html += """
-  </ul>
+    </ul>
 
-  <h2>Recently Played (Last 2 Weeks)</h2>
-  <ul>
+    <h2>Recently Played (Last 2 Weeks)</h2>
+  <ul class="recent-games">
 """
 
 if recent_games:
     for game in recent_games:
-        html+= f"<li>{game['name']} — {game['playtime_hours']} hrs</li>\n"
+        html+= f"<li class=\"game-item\">{game['name']} — {game['playtime_hours']} hrs</li>\n"
 else:
-    html+= "<li>Nothing played recently.</li>\n"
+    html+= "<li class=\"game-item\">Nothing played recently.</li>\n"
 
 html += """
   </ul>
