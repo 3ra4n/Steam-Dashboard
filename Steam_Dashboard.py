@@ -86,38 +86,41 @@ html = f"""
 <!DOCTYPE html>
 <html>
 <head>
-<title>{player_info['personaname']}'s Steam Stats</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+    <title>{player_info['personaname']}'s Steam Stats</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>{player_info['personaname']}'s Steam Dashboard</h1>
-            <img src="{player_info['avatarfull']}" width="80">
+<body class="bg-dark text-light">
+    <div class="container py-5">
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <img src="{player_info['avatarfull']}" class="rounded" width="80">
+            <h1 class="m-0">{player_info['personaname']}'s Steam Dashboard</h1>
         </div>
+    
 
-        <h2>Top 10 Games by Playtime</h2>
+        <h2 class="mt4 mb-3">Top 10 Games by Playtime</h2>
         <ul class="top-games">
 """
 
 for g in top_games:
-        html += f"      <li class=\"game-item\">{g['name']} — {g['playtime_hours']} hrs</li>\n"
+        html += f"      <li class=\"game-item bg-dark text-light d-flex justify-content-between\"><span>{g['name']}</span><span>{g['playtime_hours']} hrs</span></li>\n"
 
 html += """
     </ul>
 
-    <h2>Recently Played (Last 2 Weeks)</h2>
+    <h2 class="mt4 mb-3">Recently Played (Last 2 Weeks)</h2>
   <ul class="recent-games">
 """
 
 if recent_games:
     for game in recent_games:
-        html+= f"<li class=\"game-item\">{game['name']} — {game['playtime_hours']} hrs</li>\n"
+        html+= f"<li class=\"game-item bg-dark text-light d-flex justify-content-between\"><span>{game['name']}</span><span>{game['playtime_hours']} hrs</span></li>\n"
 else:
-    html+= "<li class=\"game-item\">Nothing played recently.</li>\n"
+    html+= "<li class=\"game-item bg-dark text-light d-flex justify-content-between\">Nothing played recently.</li>\n"
 
 html += """
-  </ul>
+        </ul>
+        </div>
 </body>
 </html>
 """
