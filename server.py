@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import requests
 
 app = Flask(__name__)
@@ -53,6 +53,10 @@ def get_stats(steam_id):
         "top_games": games[:10],  # Return top 10 games
     }
     return jsonify(result)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
