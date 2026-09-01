@@ -1,7 +1,16 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #aa6767;
+  color: #e0dede;
+  margin-left: 100px ;
+  margin-right: 100px ;
+  padding: 0;
+}
+
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: auto;
   padding: 20px;
+  text-align: left;
 }
 
 .header {
